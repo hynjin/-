@@ -29,15 +29,7 @@
 	 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</beans:bean>
 
- 	<mvc:interceptors>
-		<mvc:interceptor>
-    		<mvc:mapping path="/**/**" />
-    		<mvc:exclude-mapping path="/**/test/**"/>
-    		<beans:bean class="com.toEat.toEat_Server.base.SessionInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors>
-
-	<context:component-scan base-package="com.daziro.dev" />
+	<context:component-scan base-package="com.toeat.toeat" />
 	
 	
 	

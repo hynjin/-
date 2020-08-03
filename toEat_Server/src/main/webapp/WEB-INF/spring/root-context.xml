@@ -19,6 +19,7 @@
 <util:map id="dbProps">
 </util:map>
 
+
 <bean id="dataSource"
        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 </bean> 

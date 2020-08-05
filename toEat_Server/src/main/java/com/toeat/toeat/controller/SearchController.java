@@ -42,7 +42,7 @@ public class SearchController {
 	@ResponseBody
 	public String search(HttpServletRequest request, HttpServletResponse response, 
 			@RequestParam Map<String,Object> param) {
-		logger.debug(Arrays.asList(param.get("rect")).get(0).toString());
+		//logger.debug(Arrays.asList(param.get("rect")).get(0).toString());
         return SearchUtil.search(param).toString();
 	}
 }

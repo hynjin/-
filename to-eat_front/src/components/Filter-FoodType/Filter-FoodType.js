@@ -46,6 +46,7 @@ const FilterFoodType = () => {
             key={i}
             inverted={!pickedFood[food]}
             handleClick={handleFoodClick}
+            btnType="food"
           >
             {food}
           </CustomButton>

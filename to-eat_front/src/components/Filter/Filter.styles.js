@@ -21,7 +21,7 @@ export const FilterContent = styled.div`
     opacity: 0.98;
   }
   section {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 0.2px solid #00babb4a;
   }

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import FilterDistance from "../Filter-distance/Filter-distance.component";
 import { FilterContent } from "./Filter.styles";
+import FilterDistance from "../Filter-distance/Filter-distance.component";
 import CustomButton from "../CustomButton/CustomButton";
 import FilterFoodType from "../Filter-FoodType/Filter-FoodType";
+import FilterSortType from "../Filter-SortType/Filter-SortType";
 
 const Filter = () => {
   const [distance, setDistance] = useState(1);
@@ -12,6 +13,7 @@ const Filter = () => {
     <FilterContent>
       <FilterDistance distance={distance} setDistance={setDistance} />
       <FilterFoodType />
+      <FilterSortType />
     </FilterContent>
   );
 };

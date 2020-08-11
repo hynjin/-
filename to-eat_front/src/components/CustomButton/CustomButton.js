@@ -2,16 +2,19 @@ import React from "react";
 
 import styled from "styled-components";
 
-const CustomButton = React.memo(({ children, inverted, handleClick }) => {
-  return (
-    <CustomButtonContent
-      onClick={() => handleClick(children)}
-      inverted={inverted}
-    >
-      {children}
-    </CustomButtonContent>
-  );
-});
+const CustomButton = React.memo(
+  ({ children, inverted, handleClick, btnType }) => {
+    return (
+      <CustomButtonContent
+        onClick={() => handleClick(children)}
+        inverted={inverted}
+        btnType={btnType}
+      >
+        {children}
+      </CustomButtonContent>
+    );
+  }
+);
 
 const CustomButtonContent = styled.button`
   ${({ inverted }) => {
@@ -35,10 +38,28 @@ const CustomButtonContent = styled.button`
   &:hover {
     box-shadow: 0px 1px 0.5px #0087bb;
     transform: scale(1.02);
+    ${({ btnType, inverted }) => {
+      if (btnType === "sort") {
+        if (inverted) {
+          return `
+              background-color: #00babb;
+              border: 0.2px solid #00babb;
+              color: #ffffff;
+          `;
+        } else {
+          return `
+              background-color: #ffffff;
+              border: 0.2px solid #00babb;
+              color: #00babb;
+          `;
+        }
+      }
+    }}
   }
   &:active {
     transform: scale(0.96);
   }
+
   box-shadow: 0px 0.5px 0.5px #0087bb;
   cursor: pointer;
   border-radius: 0.6rem;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SectionSortType, SortTypeContainer } from "./Filter-SortType.style";
-import CustomButton from "./../CustomButton/CustomButton";
+import CustomButton from "../CustomButton/CustomButton.component";
 
 const sortTypes = { review: "리뷰순", rating: "평점순" };
 

@@ -1,12 +1,32 @@
 import { FilterActionTypes } from "./../actions/FilterActions";
 
+const defaultFoodType = {
+  한식: true,
+  디저트: false,
+  동남아음식: false,
+  인도음식: false,
+  양식: false,
+  중식: false,
+  일식: false,
+  분식: false,
+  패스트푸드: false,
+  뷔페: false
+};
+
 const INITIAL_STATE = {
   distance: 1,
-  foodType: "한식",
+  pickedFood: defaultFoodType,
   query: "",
   sortType: "review"
 };
 
+// utils
+const changePickedFood = (food, pickedFood) => ({
+  ...pickedFood,
+  [food]: !pickedFood[food]
+});
+
+// reducer
 const filterReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FilterActionTypes.SET_DISTANCE:
@@ -17,7 +37,7 @@ const filterReducer = (state = INITIAL_STATE, action) => {
     case FilterActionTypes.SET_FOODTYPE:
       return {
         ...state,
-        foodType: action.payload
+        pickedFood: changePickedFood(action.payload, state.pickedFood)
       };
     case FilterActionTypes.SET_QUERY:
       return {

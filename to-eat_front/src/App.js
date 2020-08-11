@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Map from "./components/Map/Map.component";
-import Filter from "./components/Filter/Filter";
+import Filter from "./components/Filter/Filter.component";
 
 function App() {
   return (

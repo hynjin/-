@@ -3,12 +3,13 @@ import React from "react";
 import styled from "styled-components";
 
 const CustomButton = React.memo(
-  ({ children, inverted, handleClick, btnType }) => {
+  ({ children, inverted, handleClick, btnType, huge }) => {
     return (
       <CustomButtonContent
         onClick={() => handleClick(children)}
         inverted={inverted}
         btnType={btnType}
+        huge={huge}
       >
         {children}
       </CustomButtonContent>
@@ -36,8 +37,6 @@ const CustomButtonContent = styled.button`
     outline: none;
   }
   &:hover {
-    box-shadow: 0px 1px 0.5px #0087bb;
-    transform: scale(1.02);
     ${({ btnType, inverted }) => {
       if (btnType === "sort") {
         if (inverted) {
@@ -53,6 +52,11 @@ const CustomButtonContent = styled.button`
               color: #00babb;
           `;
         }
+      } else if (btnType === "food") {
+        return `
+          box-shadow: 0px 1px 0.5px #0087bb;
+          transform: scale(1.02);
+        `;
       }
     }}
   }
@@ -63,6 +67,18 @@ const CustomButtonContent = styled.button`
   box-shadow: 0px 0.5px 0.5px #0087bb;
   cursor: pointer;
   border-radius: 0.6rem;
+  ${({ huge }) => {
+    if (huge) {
+      return `
+        width: 100%;
+        &:hover {
+          background-color: #ffffff;
+          border: 0.2px solid #00babb;
+          color: #00babb;
+        }
+      `;
+    }
+  }}
   height: 2rem;
   font-size: 0.8rem;
   margin: 0.5rem 0.5rem 0.5rem 0;

@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { SectionSortType, SortTypeContainer } from "./Filter-SortType.style";
 import CustomButton from "../CustomButton/CustomButton.component";
+import { useDispatch, useSelector } from "react-redux";
+import { setSortType } from "../../redux/actions/FilterActions";
 
 const sortTypes = { review: "리뷰순", rating: "평점순" };
 
 const FilterSortType = () => {
   const { review, rating } = sortTypes;
-  const [sortType, setSortType] = useState(review);
+  const dispatch = useDispatch();
+  const sortType = useSelector(state => state.filter.sortType);
 
   const handleSortClick = () => {
     if (sortType === review) {
-      setSortType(rating);
+      dispatch(setSortType(rating));
     } else {
-      setSortType(review);
+      dispatch(setSortType(review));
     }
   };
 

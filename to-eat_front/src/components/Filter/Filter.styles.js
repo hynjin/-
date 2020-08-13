@@ -17,6 +17,7 @@ export const FilterContent = styled.div`
   padding: 2rem;
   opacity: 0.5;
   transition: opacity ease-in 0.1s;
+  overflow: auto;
   &:hover {
     opacity: 0.98;
   }

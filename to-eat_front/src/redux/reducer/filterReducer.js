@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   distance: 1,
   pickedFood: defaultFoodType,
   query: "",
-  sortType: "review"
+  sortType: "리뷰순"
 };
 
 // utils

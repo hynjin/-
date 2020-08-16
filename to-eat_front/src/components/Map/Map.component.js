@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 const Map = () => {
   const { map, kakao } = useKakaoMap();
-  const dispatch = useDispatch();
   const stores = useSelector(state => state.store.stores);
 
   let positions = [];
@@ -20,7 +19,7 @@ const Map = () => {
       };
     });
   }
-  console.log(positions);
+
   for (let i = 0; i < positions.length; i++) {
     const imageSrc =
       "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";

@@ -14,7 +14,13 @@ export const FilterContent = styled.div`
   height: 80%;
   top: 10%;
   right: 3rem;
-  padding: 2rem;
+  ${({ result }) => {
+    if (!result) {
+      return `
+        padding: 2rem;
+      `;
+    }
+  }}
   opacity: 0.5;
   transition: opacity ease-in 0.1s;
   overflow: auto;

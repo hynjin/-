@@ -1,5 +1,7 @@
 import { StoreActionTypes } from "./../actions/StoreActions";
-
+const INITIAL_STATE2 = {
+  stores: []
+};
 const INITIAL_STATE = {
   stores: [
     {

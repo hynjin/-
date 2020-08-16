@@ -31,7 +31,7 @@ export const useKakaoMap = () => {
         setKakaoObj(kakao);
       });
     };
-  }, [lat, lng]);
+  }, [lat, lng, stores]);
 
   return { map, kakao: kakaoObj };
 };

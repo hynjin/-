@@ -234,6 +234,11 @@ const storeReducer = (state = INITIAL_STATE, action) => {
         ...state,
         stores: JSON.parse(action.payload)
       };
+    case StoreActionTypes.SET_STORE_EMPTY:
+      return {
+        ...state,
+        stores: []
+      };
     default:
       return state;
   }

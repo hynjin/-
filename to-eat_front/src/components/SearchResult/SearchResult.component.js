@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import getDistance from "geolib/es/getDistance";
 import { Icon } from "semantic-ui-react";
 
@@ -10,13 +10,16 @@ import {
 } from "./SearchResult.styles";
 import { usePosition } from "../../hooks/usePosition";
 import CustomButton from "../CustomButton/CustomButton.component";
+import { setStoreEmpty } from "../../redux/actions/StoreActions";
 
 const SearchResult = () => {
+  const NO_PHONE_NUMBER = "매장 전화번호가 없습니다.";
   const stores = useSelector(state => state.store.stores);
   const { lat, lng } = usePosition();
+  const dispatch = useDispatch();
 
   const handleBackwardClick = () => {
-    console.log("empty stores in global state and update view");
+    dispatch(setStoreEmpty());
   };
 
   return (
@@ -42,7 +45,7 @@ const SearchResult = () => {
               </a>{" "}
             </div>
             <div>| {category_name.split(">")[1].trim()}</div>
-            <div>| {phone}</div>
+            <div>| {phone || NO_PHONE_NUMBER}</div>
             <div>| {road_address_name}</div>
             <div>
               {(

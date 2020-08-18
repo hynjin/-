@@ -35,4 +35,11 @@ export const SearchResultitem = styled.li`
   &:hover {
     background-color: #00babb24;
   }
+  ${({ selected }) => {
+    if (selected) {
+      return `
+        background-color: #00babb24;
+      `;
+    }
+  }}
 `;

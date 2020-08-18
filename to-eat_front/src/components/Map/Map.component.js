@@ -2,12 +2,12 @@ import React from "react";
 
 import { useKakaoMap } from "../../hooks/useKakaoMap";
 import { MapContent } from "./Map.styles";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const Map = () => {
   const { map, kakao } = useKakaoMap();
   const stores = useSelector(state => state.store.stores);
+  const selected = useSelector(state => state.map.selected);
 
   let positions = [];
 
@@ -21,18 +21,28 @@ const Map = () => {
   }
 
   for (let i = 0; i < positions.length; i++) {
-    const imageSrc =
-      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
     const imageSize = new kakao.maps.Size(24, 35);
-    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     const { latlng, title } = positions[i];
-    const marker = new kakao.maps.Marker({
-      map,
+    let imageSrc;
+
+    if (selected !== title) {
+      imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+    } else {
+      imageSrc = "http://t1.daumcdn.net/mapjsapi/images/2x/marker.png";
+    }
+    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    let marker;
+
+    marker = new kakao.maps.Marker({
       position: latlng,
       title: title,
       image: markerImage
     });
+
+    marker.setMap(map);
   }
+
   return <MapContent id="map"></MapContent>;
 };
 

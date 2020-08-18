@@ -3,14 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import getDistance from "geolib/es/getDistance";
 import { Icon } from "semantic-ui-react";
 
-import {
-  SearchResultContent,
-  SearchResultContainer,
-  SearchResultitem
-} from "./SearchResult.styles";
+import { SearchResultContainer, SearchResultitem } from "./SearchResult.styles";
 import { usePosition } from "../../hooks/usePosition";
 import CustomButton from "../CustomButton/CustomButton.component";
 import { setStoreEmpty } from "../../redux/actions/StoreActions";
+import { setSelectedPlace } from "../../redux/actions/MapActions";
 
 const SearchResult = () => {
   const NO_PHONE_NUMBER = "매장 전화번호가 없습니다.";
@@ -20,6 +17,10 @@ const SearchResult = () => {
 
   const handleBackwardClick = () => {
     dispatch(setStoreEmpty());
+  };
+
+  const handleMouseMove = current => {
+    dispatch(setSelectedPlace(current || ""));
   };
 
   return (
@@ -38,7 +39,11 @@ const SearchResult = () => {
           y
         } = store;
         return (
-          <SearchResultitem key={i}>
+          <SearchResultitem
+            key={i}
+            onMouseOver={() => handleMouseMove(place_name)}
+            onMouseOut={() => handleMouseMove()}
+          >
             <div>
               <a href={place_url} target="blank">
                 {place_name}
@@ -51,7 +56,8 @@ const SearchResult = () => {
               {(
                 getDistance(
                   { latitude: lat, longitude: lng },
-                  { latitude: Number(y), longitude: Number(x) }
+                  { latitude: Number(y), longitude: Number(x) },
+                  1
                 ) / 1000
               ).toFixed(1)}{" "}
               km

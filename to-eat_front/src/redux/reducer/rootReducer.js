@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import storeReducer from "./storeReducer";
 import filterReducer from "./filterReducer";
+import mapReducer from "./mapReducer";
 
 const persistConfig = {
   key: "root",
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   store: storeReducer,
-  filter: filterReducer
+  filter: filterReducer,
+  map: mapReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
